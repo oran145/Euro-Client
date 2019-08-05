@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="content">
+    <h2>Create Tournament</h2>
+    <div class="form-container">
+      <input
+        class="input"
+        type="text"
+        placeholder="Tournament name"
+        required
+        [(ngModel)]="tournamentName"
+      />
+      <div class="grid-container">
+        <div class="grid-row">
+          <div></div>
+          <div>Exact result</div>
+          <div>Correctly winnig team</div>
+          <div>Game over at?</div>
+        </div>
+        <div *ngFor="let stage of stages" class="grid-row">
+          <label class="label">Scoring for {{ stage.stageName }}</label>
+          <input
+            class="input"
+            type="number"
+            [value]="stage.exactResult"
+            [(ngModel)]="stage.exactResult"
+            required
+          />
+          <input
+            class="input"
+            type="number"
+            [(ngModel)]="stage.correctlyWinnigTeam"
+            required
+          />
+          <input
+            *ngIf="stage.stageNumber > 1"
+            class="input"
+            type="number"
+            [(ngModel)]="stage.howTheGameOverResult"
+            required
+          />
+        </div>
+      </div>
+
+      <div>
+        <button (click)="back()" type="button" class="back-btn">Back</button>
+        <button type="button" class="create-btn" (click)="onSubmit()">
+          Create
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+.container {
+    display: grid;
+    grid-template-columns: 10% 10% 30% auto auto auto;
+}
+
+.col {
+    padding: .4em 1.3em;
+}
+
+.color-dark {
+    background: #2885c4;
+}
+
+.color-light {
+    background: #57b3f1;
+}
+
+.content {
+    justify-self: center;
+}
+
+.person-pic {
+    width: 50px;
+    height: 50px;
+}
+
+.spinner {
+    text-align: center;
+}

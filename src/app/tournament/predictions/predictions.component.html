@@ -1,0 +1,60 @@
+<div *ngIf="loading" class="spinner">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+<div *ngIf="!loading">
+  <span class="stages">
+    <div
+      class="stage"
+      *ngFor="let stage of stages; let i = index"
+      (click)="changeStage(i)"
+      [ngClass]="{ 'highlight-stage': currentStage === stages[i] }"
+    >
+      {{ stage.displayName }}
+    </div>
+  </span>
+
+  <div class="matches">
+    <div
+      *ngFor="let game of games | stageFilter: currentStage.dbName"
+      class="match"
+    >
+      <div [hidden]="game.points == null" class="points">{{ game.points }}</div>
+      <div class="matchContainer color-light {{ game.class }}">
+        <div class="date">
+          <span>
+            {{ game.gameStartDate | date: "MMM d, y" }}
+          </span>
+          <span>
+            {{ game.gameStartDate | date: "h:mm a" }}
+          </span>
+        </div>
+        <div class="home-club">
+          <span class="col">{{ game.groupA }}</span>
+          <img src="{{ game.groupAImg }}" />
+        </div>
+        <div class="score">
+          <input
+            type="number"
+            name="homeResult"
+            class="resultInput"
+            [disabled]="game.gameStarted"
+            [(ngModel)]="game.userPrediction.groupAPrediction"
+          />
+          -
+          <input
+            type="number"
+            name="awayResult"
+            class="resultInput"
+            [disabled]="game.gameStarted"
+            [(ngModel)]="game.userPrediction.groupBPrediction"
+          />
+        </div>
+        <div class="away-club">
+          <img src="{{ game.groupBImg }}" />
+          <span class="col">{{ game.groupB }}</span>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="save-btn" (click)="onSave()">Save</button>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<div *ngIf="loading" class="spinner">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+<div *ngIf="!loading">
+  <div class="container color-dark">
+    <div class="col">
+      <p>#</p>
+    </div>
+    <div class="col">
+      <p></p>
+    </div>
+    <div class="col">
+      <p></p>
+    </div>
+    <div class="col">
+      <p>EXACT SCORELINE</p>
+    </div>
+    <div class="col">
+      <p>OUTCOME</p>
+    </div>
+    <div class="col">
+      <p>POINTS</p>
+    </div>
+  </div>
+  <div
+    class="container color-light"
+    *ngFor="let participant of scoreTable; let index = index"
+  >
+    <div class="col">
+      <p>{{ index + 1 }}</p>
+    </div>
+    <div class="col">
+      <img [src]="participant.imagePath" class="person-pic" />
+    </div>
+    <div class="col">
+      <p>{{ participant.displayName }}</p>
+    </div>
+    <div class="col content">
+      <p>{{ participant.exactScoreline }}</p>
+    </div>
+    <div class="col content">
+      <p>{{ participant.outcome }}</p>
+    </div>
+    <div class="col content">
+      <p>{{ participant.points }}</p>
+    </div>
+  </div>
+</div>

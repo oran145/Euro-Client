@@ -1,0 +1,56 @@
+<app-alert
+  [message]="error"
+  *ngIf="error"
+  (close)="onHandleError()"
+></app-alert>
+<div class="container">
+  <div class="content">
+    <div class="page-part" *ngIf="userTournaments.length !== 0">
+      <select [(ngModel)]="selectedTournament" id="selectedTournament">
+        <option [ngValue]="undefined" disabled selected
+          >Select a tournament</option
+        >
+        <option
+          *ngFor="let tournament of userTournaments"
+          [value]="tournament.tournamentName"
+          >{{ tournament.tournamentName }}</option
+        >
+      </select>
+      <button class="enter-btn" (click)="onEnter()">Enter</button>
+    </div>
+    <div class="line" *ngIf="userTournaments.length !== 0">
+      <span class="text-line">
+        or
+      </span>
+    </div>
+    <form
+      #joinTournamentForm="ngForm"
+      (ngSubmit)="onSubmit(joinTournamentForm)"
+      class="page-part"
+    >
+      <input
+        type="text"
+        required
+        ngModel
+        id="tournamentId"
+        name="tournamentId"
+        placeholder="Tournament ID"
+      />
+      <button class="join-btn" type="submit">Join</button>
+    </form>
+    <div class="line">
+      <span class="text-line">
+        or
+      </span>
+    </div>
+    <div class="page-part">
+      <button
+        class="new-tournament-btn"
+        type="button"
+        (click)="createTournament()"
+      >
+        Create new tournament
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="content">
+    <app-alert
+      [message]="error"
+      *ngIf="error"
+      (close)="onHandleError()"
+    ></app-alert>
+    <div>
+      <div class="fb-btn">
+        <a (click)="signInWithFacebook()">
+          <i class="fa fa-facebook"></i> Login with Facebook
+        </a>
+      </div>
+      <div class="g-btn">
+        <a (click)="signInWithGoogle()">
+          <i class="fa fa-google"></i> Login with Google
+        </a>
+      </div>
+      <div class="line">
+        <span class="text-line">
+          or
+        </span>
+      </div>
+      <div>
+        <form
+          class="form-container"
+          #loginForm="ngForm"
+          (ngSubmit)="onSubmit(loginForm)"
+        >
+          <input
+            type="email"
+            required
+            ngModel
+            id="email"
+            name="email"
+            placeholder="Email address"
+            class="input"
+          />
+          <input
+            Email
+            address
+            type="password"
+            required
+            ngModel
+            id="password"
+            name="password"
+            class="input"
+            placeholder="Password"
+          />
+          <button type="submit" class="login-btn">Login</button>
+          <div class="new-account">
+            Don't have an account yet?<a (click)="onRegister()" class="link"
+              >Create new account</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

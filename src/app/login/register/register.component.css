@@ -1,0 +1,58 @@
+.container {
+    background-color: #dcd8d8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.dialog {
+    position: absolute;
+    top: 25%;
+    left: 35%;
+    width: 40%;
+    height: 45%;
+    z-index: 10;
+    background-color: #f2f2f2;
+    border: 1px solid #b5b5b5;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 40px;
+    border-radius: 3px;
+}
+
+.input {
+    margin-bottom: 10px;
+    border-radius: 3px;
+    height: 20px;
+    border: 1px solid lightgray;
+    padding: 3px 10px;
+    font-size: 12px;
+    width: 200px;
+}
+
+.btn {
+    color: white;
+    padding: 3px;
+    border: none;
+    border-radius: 1px;
+    margin: 2px;
+    opacity: 0.85;
+    width: 60px;
+    font-size: 10px;
+    line-height: 20px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.register-btn {
+    background-color: #3B5998;
+}
+
+.close-btn {
+    background-color: #d9534f;
+}
